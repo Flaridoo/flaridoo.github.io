@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>  
 
 <html>  
@@ -13,33 +13,101 @@
 
 </head>  
 
-<body>  
-<div style="">
-<a href="index.html" title="返回首页哟" style="font-size:30px">返回首页</a>
+<body>
 
-<ul style="font-size:80px;clear:both;list-style:none;">
-<li><p><input type='button' value='2号' onclick='run1();' style="float:left;margin-right:20px;"/></p></li>
-<li><p><input type='button' value='3号' onclick='run2();' style="float:left;margin-right:20px;"/></p></li>
-<li><p><input type='button' value='4号' onclick='run3();' style="float:left;margin-right:20px;"/></p></li>
-<li><p><input type='button' value='5号' onclick='run4();' style="float:left;margin-right:20px;"/></p></li>
-<li><p><input type='button' value='6号' onclick='run5();' style="float:left;margin-right:20px;"/></p></li>
-<li><p><input type='button' value='7号' onclick='run6();' style="float:left;margin-right:20px;"/></p></li>
-</ul>
-</div>
+    <div>
+        <div class="title" style="float:left;">
+            <p >日期线路规划图</p>
+        </div>
+        <div class="return_home">
+            <a href="index.html" title="返回首页哟">HOME</a>
+        </div>
+        <div class="list">
+            <ul style="clear:both;list-style:none;">
+                <li><input type='button' value='2号' onclick='run1();' /></li>
+                <li><input type='button' value='3号' onclick='run2();' /></li>
+                <li><input type='button' value='4号' onclick='run3();' /></li>
+                <li><input type='button' value='5号' onclick='run4();' /></li>
+                <li><input type='button' value='6号' onclick='run5();' /></li>
+                <li><input type='button' value='7号' onclick='run6();' /></li>
+            </ul>
+        </div>
+    </div>
 
-<div style="width:96%;height:800px;border:1px solid gray" id="container"></div>  
+    <div style="width:100%;height:600px;border:1px solid gray" id="container"></div>
 
-<script type="text/javascript">  
+    <style type="text/css">
+        .title p {
+            margin: 10px 0px 20px -20px;
+            padding: 10px 20px 10px 100px;
+            font-size: 50px;
+            color: gray;
+            background-color: antiquewhite;
+            border-top-right-radius:10px;
+            border-bottom-right-radius:10px;
+        }
+        .return_home {
+            float:right;
+            margin-right:15px;
+            margin-top: 25px;
+        }
+        a:link {
+            color: white;
+            background-color: white;
+            border-color: aquamarine;
+        }
+        a:hover {
+            color: red;
+        }
+        a:active {
+            color: red;
+            background-color: white;
+            border-color: white;
+        }
+            .return_home a {
+                padding:8px;
+                font-size: 30px;
+                text-decoration: none;
+                border: 2px solid;
+                border-radius: 25px;    
+            }
+        ul > li > input {
+            float:left;
+            margin-right:10px;
+            margin-bottom:8px;
+            font-size:30px;
+            width: 80px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius:5px;
+        }
+            ul > li > input:hover {
+                color:red;
+                background-color:gold;
+            }
+            /* 这里是设置input获得焦点时的变化 */
+            ul > li > input:focus {
+                background-color: green;
+            }
+        /* 设置登录div被点击时改变一下背景色 */
+            ul > li > input:active {
+                background-color: lightgreen;
+            }
 
-    var map = new BMap.Map("container");  
+    </style>
 
-    map.centerAndZoom(new BMap.Point(110.34879,20.048462), 10);  
+    <script type="text/javascript">
+
+
+    var map = new BMap.Map("container");
+
+    map.centerAndZoom(new BMap.Point(110.34879,20.048462), 10);
 
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
-    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件  
-    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件  
-    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件  
+    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
 
       //2号
     var myP1_1 = new BMap.Point(110.348792,20.048462);    //起点-海口骑楼老街
@@ -48,269 +116,269 @@
     var myP1_4 = new BMap.Point(110.692412,19.808871);    //途经-大致坡镇
     var myP1_5 = new BMap.Point(110.741904,19.716186);    //途经-潭牛镇
     var myP1_6 = new BMap.Point(110.754399,19.614411);    //终点-文昌市
-	
+
 	//3号
     var myP2_1 = new BMap.Point(110.754399,19.614411);    //起点-文昌市
     var myP2_2 = new BMap.Point(110.703768,19.413618);    //终点-冯家湾
     var myP2_3 = new BMap.Point(110.613385,19.341617);    //终点-长坡
     var myP2_4 = new BMap.Point(110.623386,19.247912);    //终点-谭门
     var myP2_5 = new BMap.Point(110.592991,19.165494);    //终点-博鳌
-	
+
 	//4号
     var myP3_1 = new BMap.Point(110.592991,19.165494);    //终点-博鳌
     var myP3_2 = new BMap.Point(110.397475,18.801292);    //终点-龙滚-山根-和乐-港北港口坐船-大花角-北坡-万宁
-	
+
 	//5号
     var myP4_1 = new BMap.Point(110.397475,18.801292);    //途经-万宁市
     var myP4_2 = new BMap.Point(110.040214,18.540812);    //途经-陵水县
-	
+
 	//6号
     var myP5_1 = new BMap.Point(110.741904,19.716186);    //途经-陵水县
     var myP5_2 = new BMap.Point(109.519135,18.279062);    //途经-三亚市
-	
+
 	//7号
     var myP6_1 = new BMap.Point(110.741904,19.716186);    //途经-潭牛镇
     var myP6_1 = new BMap.Point(110.741904,19.716186);    //途经-潭牛镇
 
-      
 
-    window.run1 = function (){  
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+    window.run1 = function (){
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+        map.clearOverlays();                        //清除地图上所有的覆盖物
 
-        walking.search(myP1_1, myP1_2);                 //第一个步行搜索  
-        walking.search(myP1_2, myP1_3);                 //第二个步行搜索  
-        walking.search(myP1_3, myP1_4);                 //第二个步行搜索  
-        walking.search(myP1_4, myP1_5);                 //第二个步行搜索  
-        walking.search(myP1_5, myP1_6);                 //第5个步行搜索个步行搜索  
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
 
-        walking.setSearchCompleteCallback(function(){  
+        walking.search(myP1_1, myP1_2);                 //第一个步行搜索
+        walking.search(myP1_2, myP1_3);                 //第二个步行搜索
+        walking.search(myP1_3, myP1_4);                 //第二个步行搜索
+        walking.search(myP1_4, myP1_5);                 //第二个步行搜索
+        walking.search(myP1_5, myP1_6);                 //第5个步行搜索个步行搜索
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+        walking.setSearchCompleteCallback(function(){
 
-            map.addOverlay(polyline);  
-			
-            var m1 = new BMap.Marker(myP1_1);         //创建marker  
-            var m2 = new BMap.Marker(myP1_2);  
-            var m3 = new BMap.Marker(myP1_3);  
-            var m4 = new BMap.Marker(myP1_4);  
-            var m5 = new BMap.Marker(myP1_5);  
-            var m6 = new BMap.Marker(myP1_6);  
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
 
-            map.addOverlay(m1);  
-            map.addOverlay(m2);  
-            map.addOverlay(m3);  
-            map.addOverlay(m4);  
-            map.addOverlay(m5);  
-            map.addOverlay(m6);  
-              
-            var lab1 = new BMap.Label("海口骑楼老街",{position:myP1_1});        //创建label  
-            var lab2 = new BMap.Label("灵山镇",{position:myP1_2});  
-            var lab3 = new BMap.Label("三江镇",{position:myP1_3});     
-            var lab4 = new BMap.Label("大致坡镇",{position:myP1_4});     
-            var lab5 = new BMap.Label("潭牛镇",{position:myP1_5});     
-            var lab6 = new BMap.Label("文城镇",{position:myP1_6});     
+            map.addOverlay(polyline);
 
-            map.addOverlay(lab1);  
-            map.addOverlay(lab2);  
-            map.addOverlay(lab3);  
-            map.addOverlay(lab4);  
-            map.addOverlay(lab5);  
-            map.addOverlay(lab6);  
+            var m1 = new BMap.Marker(myP1_1);         //创建marker
+            var m2 = new BMap.Marker(myP1_2);
+            var m3 = new BMap.Marker(myP1_3);
+            var m4 = new BMap.Marker(myP1_4);
+            var m5 = new BMap.Marker(myP1_5);
+            var m6 = new BMap.Marker(myP1_6);
 
-            setTimeout(function(){  
+            map.addOverlay(m1);
+            map.addOverlay(m2);
+            map.addOverlay(m3);
+            map.addOverlay(m4);
+            map.addOverlay(m5);
+            map.addOverlay(m6);
 
-                map.setViewport([myP1_1,myP1_2,myP1_3,myP1_4,myP1_5,myP1_6]);          //调整到最佳视野  
+            var lab1 = new BMap.Label("海口骑楼老街",{position:myP1_1});        //创建label
+            var lab2 = new BMap.Label("灵山镇",{position:myP1_2});
+            var lab3 = new BMap.Label("三江镇",{position:myP1_3});
+            var lab4 = new BMap.Label("大致坡镇",{position:myP1_4});
+            var lab5 = new BMap.Label("潭牛镇",{position:myP1_5});
+            var lab6 = new BMap.Label("文城镇",{position:myP1_6});
 
-            },1000);  
-			
-        });  
+            map.addOverlay(lab1);
+            map.addOverlay(lab2);
+            map.addOverlay(lab3);
+            map.addOverlay(lab4);
+            map.addOverlay(lab5);
+            map.addOverlay(lab6);
 
-    }  
-	
-    window.run2 = function (){  
+            setTimeout(function(){
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+                map.setViewport([myP1_1,myP1_2,myP1_3,myP1_4,myP1_5,myP1_6]);          //调整到最佳视野
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+            },1000);
 
-        walking.search(myP2_1, myP2_2);                 //第一个步行搜索  
-        walking.search(myP2_2, myP2_3);                 //第二个步行搜索  
-        walking.search(myP2_3, myP2_4);                 //第二个步行搜索  
-        walking.search(myP2_4, myP2_5);                 //第4个步行搜索  
+        });
 
-        walking.setSearchCompleteCallback(function(){  
+    }
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+    window.run2 = function (){
 
-            map.addOverlay(polyline);  
+        map.clearOverlays();                        //清除地图上所有的覆盖物
 
-            map.addOverlay(new BMap.Marker(myP2_1));  
-            map.addOverlay(new BMap.Marker(myP2_2));  
-            map.addOverlay(new BMap.Marker(myP2_3));  
-            map.addOverlay(new BMap.Marker(myP2_4));  
-            map.addOverlay(new BMap.Marker(myP2_5));   
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
 
-            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));  
-            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));  
-            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));  
-            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));  
-            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));  
+        walking.search(myP2_1, myP2_2);                 //第一个步行搜索
+        walking.search(myP2_2, myP2_3);                 //第二个步行搜索
+        walking.search(myP2_3, myP2_4);                 //第二个步行搜索
+        walking.search(myP2_4, myP2_5);                 //第4个步行搜索
 
-            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);  
-			
-        });  
+        walking.setSearchCompleteCallback(function(){
 
-    }  
-	
-    window.run3 = function (){  
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+            map.addOverlay(polyline);
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+            map.addOverlay(new BMap.Marker(myP2_1));
+            map.addOverlay(new BMap.Marker(myP2_2));
+            map.addOverlay(new BMap.Marker(myP2_3));
+            map.addOverlay(new BMap.Marker(myP2_4));
+            map.addOverlay(new BMap.Marker(myP2_5));
 
-        walking.search(myP2_1, myP2_2);                 //第一个步行搜索  
-        walking.search(myP2_2, myP2_3);                 //第二个步行搜索  
-        walking.search(myP2_3, myP2_4);                 //第二个步行搜索  
-        walking.search(myP2_4, myP2_5);                 //第4个步行搜索  
+            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));
+            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));
+            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));
+            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));
+            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));
 
-        walking.setSearchCompleteCallback(function(){  
+            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+        });
 
-            map.addOverlay(polyline);  
+    }
 
-            map.addOverlay(new BMap.Marker(myP2_1));  
-            map.addOverlay(new BMap.Marker(myP2_2));  
-            map.addOverlay(new BMap.Marker(myP2_3));  
-            map.addOverlay(new BMap.Marker(myP2_4));  
-            map.addOverlay(new BMap.Marker(myP2_5));   
+    window.run3 = function (){
 
-            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));  
-            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));  
-            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));  
-            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));  
-            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));  
+        map.clearOverlays();                        //清除地图上所有的覆盖物
 
-            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);  
-			
-        });  
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
 
-    }  
-    
-	window.run4 = function (){  
+        walking.search(myP2_1, myP2_2);                 //第一个步行搜索
+        walking.search(myP2_2, myP2_3);                 //第二个步行搜索
+        walking.search(myP2_3, myP2_4);                 //第二个步行搜索
+        walking.search(myP2_4, myP2_5);                 //第4个步行搜索
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+        walking.setSearchCompleteCallback(function(){
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
 
-        walking.search(myP2_1, myP2_2);                 //第一个步行搜索  
-        walking.search(myP2_2, myP2_3);                 //第二个步行搜索  
-        walking.search(myP2_3, myP2_4);                 //第二个步行搜索  
-        walking.search(myP2_4, myP2_5);                 //第4个步行搜索  
+            map.addOverlay(polyline);
 
-        walking.setSearchCompleteCallback(function(){  
+            map.addOverlay(new BMap.Marker(myP2_1));
+            map.addOverlay(new BMap.Marker(myP2_2));
+            map.addOverlay(new BMap.Marker(myP2_3));
+            map.addOverlay(new BMap.Marker(myP2_4));
+            map.addOverlay(new BMap.Marker(myP2_5));
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));
+            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));
+            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));
+            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));
+            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));
 
-            map.addOverlay(polyline);  
+            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);
 
-            map.addOverlay(new BMap.Marker(myP2_1));  
-            map.addOverlay(new BMap.Marker(myP2_2));  
-            map.addOverlay(new BMap.Marker(myP2_3));  
-            map.addOverlay(new BMap.Marker(myP2_4));  
-            map.addOverlay(new BMap.Marker(myP2_5));   
+        });
 
-            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));  
-            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));  
-            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));  
-            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));  
-            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));  
+    }
 
-            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);  
-			
-        });  
+	window.run4 = function (){
 
-    }  
-    
-	window.run5 = function (){  
+        map.clearOverlays();                        //清除地图上所有的覆盖物
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+        walking.search(myP2_1, myP2_2);                 //第一个步行搜索
+        walking.search(myP2_2, myP2_3);                 //第二个步行搜索
+        walking.search(myP2_3, myP2_4);                 //第二个步行搜索
+        walking.search(myP2_4, myP2_5);                 //第4个步行搜索
 
-        walking.search(myP2_1, myP2_2);                 //第一个步行搜索  
-        walking.search(myP2_2, myP2_3);                 //第二个步行搜索  
-        walking.search(myP2_3, myP2_4);                 //第二个步行搜索  
-        walking.search(myP2_4, myP2_5);                 //第4个步行搜索  
+        walking.setSearchCompleteCallback(function(){
 
-        walking.setSearchCompleteCallback(function(){  
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+            map.addOverlay(polyline);
 
-            map.addOverlay(polyline);  
+            map.addOverlay(new BMap.Marker(myP2_1));
+            map.addOverlay(new BMap.Marker(myP2_2));
+            map.addOverlay(new BMap.Marker(myP2_3));
+            map.addOverlay(new BMap.Marker(myP2_4));
+            map.addOverlay(new BMap.Marker(myP2_5));
 
-            map.addOverlay(new BMap.Marker(myP2_1));  
-            map.addOverlay(new BMap.Marker(myP2_2));  
-            map.addOverlay(new BMap.Marker(myP2_3));  
-            map.addOverlay(new BMap.Marker(myP2_4));  
-            map.addOverlay(new BMap.Marker(myP2_5));   
+            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));
+            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));
+            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));
+            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));
+            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));
 
-            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));  
-            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));  
-            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));  
-            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));  
-            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));  
+            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);
 
-            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);  
-			
-        });  
+        });
 
-    }  
-    
-	window.run6 = function (){  
+    }
 
-        map.clearOverlays();                        //清除地图上所有的覆盖物  
+	window.run5 = function (){
 
-        var walking = new BMap.WalkingRoute(map);    //创建步行实例  
+        map.clearOverlays();                        //清除地图上所有的覆盖物
 
-        walking.search(myP2_1, myP2_2);                 //第一个步行搜索  
-        walking.search(myP2_2, myP2_3);                 //第二个步行搜索  
-        walking.search(myP2_3, myP2_4);                 //第二个步行搜索  
-        walking.search(myP2_4, myP2_5);                 //第4个步行搜索  
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
 
-        walking.setSearchCompleteCallback(function(){  
+        walking.search(myP2_1, myP2_2);                 //第一个步行搜索
+        walking.search(myP2_2, myP2_3);                 //第二个步行搜索
+        walking.search(myP2_3, myP2_4);                 //第二个步行搜索
+        walking.search(myP2_4, myP2_5);                 //第4个步行搜索
 
-            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组  
-            var polyline = new BMap.Polyline(pts);       
+        walking.setSearchCompleteCallback(function(){
 
-            map.addOverlay(polyline);  
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
 
-            map.addOverlay(new BMap.Marker(myP2_1));  
-            map.addOverlay(new BMap.Marker(myP2_2));  
-            map.addOverlay(new BMap.Marker(myP2_3));  
-            map.addOverlay(new BMap.Marker(myP2_4));  
-            map.addOverlay(new BMap.Marker(myP2_5));   
+            map.addOverlay(polyline);
 
-            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));  
-            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));  
-            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));  
-            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));  
-            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));  
+            map.addOverlay(new BMap.Marker(myP2_1));
+            map.addOverlay(new BMap.Marker(myP2_2));
+            map.addOverlay(new BMap.Marker(myP2_3));
+            map.addOverlay(new BMap.Marker(myP2_4));
+            map.addOverlay(new BMap.Marker(myP2_5));
 
-            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);  
-			
-        });  
+            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));
+            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));
+            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));
+            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));
+            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));
 
-    }  
-</script>  
+            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);
+
+        });
+
+    }
+
+	window.run6 = function (){
+
+        map.clearOverlays();                        //清除地图上所有的覆盖物
+
+        var walking = new BMap.WalkingRoute(map);    //创建步行实例
+
+        walking.search(myP2_1, myP2_2);                 //第一个步行搜索
+        walking.search(myP2_2, myP2_3);                 //第二个步行搜索
+        walking.search(myP2_3, myP2_4);                 //第二个步行搜索
+        walking.search(myP2_4, myP2_5);                 //第4个步行搜索
+
+        walking.setSearchCompleteCallback(function(){
+
+            var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts);
+
+            map.addOverlay(polyline);
+
+            map.addOverlay(new BMap.Marker(myP2_1));
+            map.addOverlay(new BMap.Marker(myP2_2));
+            map.addOverlay(new BMap.Marker(myP2_3));
+            map.addOverlay(new BMap.Marker(myP2_4));
+            map.addOverlay(new BMap.Marker(myP2_5));
+
+            map.addOverlay(new BMap.Label("文昌市",{position:myP2_1}));
+            map.addOverlay(new BMap.Label("冯家湾",{position:myP2_2}));
+            map.addOverlay(new BMap.Label("长坡镇",{position:myP2_3}));
+            map.addOverlay(new BMap.Label("潭门镇",{position:myP2_4}));
+            map.addOverlay(new BMap.Label("博鳌镇",{position:myP2_5}));
+
+            setTimeout(function(){map.setViewport([myP2_1,myP2_2,myP2_3,myP2_4,myP2_5]);},1000);
+
+        });
+
+    }
+    </script>
 
 </body>  
 
