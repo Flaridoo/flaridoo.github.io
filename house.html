@@ -1,0 +1,157 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>海南环岛旅行</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+</head>
+
+<body onload="run()">
+
+    <div class="return_home">
+        <a href="index.html" title="返回首页哟">HOME</a>
+    </div>
+
+    <div class="title" style="float:left;">
+        <p>沿途客栈详情</p>
+    </div>
+
+
+    <!--map-->
+    <div style="width:100%;height:600px;border:1px solid gray" id="container"></div>
+
+    <style type="text/css">
+        .title p {
+            margin: 10px 0px 20px -20px;
+            padding: 10px 20px 10px 100px;
+            font-size: 50px;
+            color: gray;
+            background-color: antiquewhite;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .return_home {
+            clear: both;
+            float: right;
+            margin-right: 15px;
+            margin-top: 25px;
+        }
+
+            .return_home a {
+                padding: 8px;
+                font-size: 30px;
+                text-decoration: none;
+                border: 2px solid;
+                border-radius: 25px;
+            }
+
+        a:link {
+            color: gray;
+            background-color: white;
+            border-color: aquamarine;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        a:active {
+            color: red;
+            background-color: white;
+            border-color: white;
+        }
+    </style>
+
+
+
+    <script type="text/javascript">
+
+        var map = new BMap.Map("container");
+
+        map.centerAndZoom(new BMap.Point(109.889346, 19.228289), 9);
+
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+        map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+        map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+        map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+
+        //2号
+        var myP1 = new BMap.Point(110.355036, 20.023766);    //起点-海口
+        var myP2 = new BMap.Point(110.977996, 19.655292);    //途经-文昌龙楼店
+        var myP3 = new BMap.Point(110.858311, 19.536913);    //途经-文昌东郊椰林店
+        var myP4 = new BMap.Point(110.596122, 19.185073);    //途经-博鳌517
+        var myP5 = new BMap.Point(110.231886, 18.768164);    //终点-兴隆
+        var myP6 = new BMap.Point(110.338122, 18.683241);    //终点-神州
+        var myP7 = new BMap.Point(109.741928, 18.384652);    //终点-海棠湾
+        var myP8 = new BMap.Point(109.547372, 18.237049);    //终点-三亚
+        var myP9 = new BMap.Point(108.699685, 18.511162);    //终点-莺歌海
+        var myP10 = new BMap.Point(108.670861, 19.127191);    //终点-东方
+        var myP11 = new BMap.Point(109.573124, 19.51917);    //终点-儋州
+        var myP12 = new BMap.Point(109.560646, 18.754862);    //终点-五指山
+
+
+        window.run = function () {
+
+            map.clearOverlays();                        //清除地图上所有的覆盖物
+
+            var walking = new BMap.WalkingRoute(map);    //创建步行实例
+
+            walking.search(myP1, myP2);                 //第一个步行搜索
+            walking.search(myP2, myP3);                 //第二个步行搜索
+            walking.search(myP3, myP4);                 //第二个步行搜索
+            walking.search(myP4, myP5);                 //第4个步行搜索
+            walking.search(myP5, myP6);                 //第4个步行搜索
+            walking.search(myP6, myP7);                 //第4个步行搜索
+            walking.search(myP7, myP8);                 //第4个步行搜索
+            walking.search(myP8, myP9);                 //第4个步行搜索
+            walking.search(myP9, myP10);                 //第4个步行搜索
+            walking.search(myP10, myP11);                 //第4个步行搜索
+            walking.search(myP11, myP12);                 //第4个步行搜索
+
+            walking.setSearchCompleteCallback(function () {
+
+                var pts = walking.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+                var polyline = new BMap.Polyline(pts);
+
+                map.addOverlay(polyline);
+
+                map.addOverlay(new BMap.Marker(myP1));
+                map.addOverlay(new BMap.Marker(myP2));
+                map.addOverlay(new BMap.Marker(myP3));
+                map.addOverlay(new BMap.Marker(myP4));
+                map.addOverlay(new BMap.Marker(myP5));
+                map.addOverlay(new BMap.Marker(myP6));
+                map.addOverlay(new BMap.Marker(myP7));
+                map.addOverlay(new BMap.Marker(myP8));
+                map.addOverlay(new BMap.Marker(myP9));
+                map.addOverlay(new BMap.Marker(myP10));
+                map.addOverlay(new BMap.Marker(myP11));
+                map.addOverlay(new BMap.Marker(myP12));
+
+                map.addOverlay(new BMap.Label("海口市", { position: myP1 }));
+                map.addOverlay(new BMap.Label("文昌市龙楼店(13876570422)", { position: myP2 }));
+                map.addOverlay(new BMap.Label("文昌市东郊椰林店(15109868500)", { position: myP3 }));
+                map.addOverlay(new BMap.Label("博鳌镇大榕树店(17784638517)", { position: myP4 }));
+                map.addOverlay(new BMap.Label("兴隆镇", { position: myP5 }));
+                map.addOverlay(new BMap.Label("万宁市神州半岛(18689706748)", { position: myP6 }));
+                map.addOverlay(new BMap.Label("三亚海棠湾(13379957517)", { position: myP7 }));
+                map.addOverlay(new BMap.Label("三亚市(17689876517)", { position: myP8 }));
+                map.addOverlay(new BMap.Label("莺歌海镇(18845919119)", { position: myP9 }));
+                map.addOverlay(new BMap.Label("东方市(18208983716)", { position: myP10 }));
+                map.addOverlay(new BMap.Label("儋州市(18907652388)", { position: myP11 }));
+                map.addOverlay(new BMap.Label("五指山市(13504631287)", { position: myP12 }));
+
+                setTimeout(function () { map.setViewport([myP1,myP8])}, 1000);
+
+            });
+
+    }
+
+    </script>
+</body>
+</html>
